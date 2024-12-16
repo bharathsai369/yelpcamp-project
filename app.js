@@ -154,11 +154,11 @@ app.use((req, res, next) => {
     next()
 })
 
-const corsOptions = {
-    origin: 'https://ycampproject.onrender.com',
-    credentials: true,
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: 'https://ycampproject.onrender.com',
+//     credentials: true,
+// };
+// app.use(cors(corsOptions));
 
 
 // app.get('/fakeuser', async (req, res) => {
