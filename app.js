@@ -10,7 +10,7 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const ejsMate = require('ejs-mate')
 const methodOverride = require('method-override')
-const cors = require('cors')
+// const cors = require('cors')
 
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
@@ -69,7 +69,7 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'thisshouldbeabettersecret!'
+        secret,
     }
 });
 
@@ -86,7 +86,6 @@ const sessionConfig = {
     cookie: {
         httpOnly: true,
         secure: true,
-        sameSite: 'Lax',
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -154,19 +153,6 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error')
     next()
 })
-
-// const corsOptions = {
-//     origin: 'https://ycampproject.onrender.com',
-//     credentials: true,
-// };
-// app.use(cors(corsOptions));
-
-
-// app.get('/fakeuser', async (req, res) => {
-//     const user = new User({ email: 'colt@mail.com', username: 'colt123' })
-//     const newUser = await User.register(user, 'chicken')
-//     res.send(newUser)
-// })
 
 app.use('/', userRoutes)
 app.use('/campgrounds', campgroundRoutes)
