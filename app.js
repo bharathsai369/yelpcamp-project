@@ -155,7 +155,7 @@ app.use((req, res, next) => {
 })
 
 const corsOptions = {
-    origin: 'your-frontend-url',
+    origin: 'https://ycampproject.onrender.com',
     credentials: true,
 };
 app.use(cors(corsOptions));
