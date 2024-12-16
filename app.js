@@ -56,7 +56,7 @@ app.use(methodOverride('_method'))
 // app.use(express.static('public'))
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(cors())
+// app.use(cors())
 
 // app.use(mongoSanitize())
 app.use(mongoSanitize({
@@ -153,6 +153,13 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error')
     next()
 })
+
+const corsOptions = {
+    origin: 'your-frontend-url',
+    credentials: true,
+};
+app.use(cors(corsOptions));
+
 
 // app.get('/fakeuser', async (req, res) => {
 //     const user = new User({ email: 'colt@mail.com', username: 'colt123' })
