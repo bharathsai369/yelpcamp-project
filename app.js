@@ -168,13 +168,13 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
+    console.log(err)
     // const { message = 'something went wrong (default response)', statusCode = 500 } = err
     const { statusCode = 500 } = err
     if (!err.message) err.message = 'Oh no, something went wrong'
     res.status(statusCode).render('error', { err })
     // res.status(statusCode).send(message)
     // res.send('oh boy, something went wrong')
-    console.log(err)
 })
 
 const port = process.env.PORT || 3000
