@@ -174,6 +174,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
     // res.status(statusCode).send(message)
     // res.send('oh boy, something went wrong')
+    console.log(err)
 })
 
 const port = process.env.PORT || 3000
